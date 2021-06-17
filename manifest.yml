@@ -1,0 +1,7 @@
+applications:
+  - name: wit hackathon react web app 2
+memory: 256M
+path: build/
+buildpack: staticfile_buildpack 
+routes:
+  - route: wit-hackathon-react-web-app-2.eu-gb.cf.appdomain.cloud
