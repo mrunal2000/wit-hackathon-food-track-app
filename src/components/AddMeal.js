@@ -27,7 +27,7 @@ const AddMeal = ({ open, setIsOpened, mealType = 'breakfast', calCarbonTracker =
         const { list, info } = calCarbonTracker.dishes;
         return list.filter( id => {
             const dishInfo = info[id];
-            return (dishInfo.name || dishInfo.id).includes(searchedQuery);
+            return (dishInfo.name || dishInfo.id).toLowerCase().includes(searchedQuery.toLowerCase());
         })
     }, [calCarbonTracker, searchedQuery])
     
