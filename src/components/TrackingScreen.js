@@ -7,8 +7,6 @@ const TrackingScreen = () => {
     const [isOpened, setIsOpened] = useState(false);
     const calCarbonTracker = useContext(CalCarbonTrackerContext);
 
-    console.log(calCarbonTracker.meal, Object.keys(calCarbonTracker.meal));
-
     const onClickAddAction = useCallback(e => {
         setIsOpened(true);
         setMealType(e.target.dataset.mealType);
@@ -17,33 +15,16 @@ const TrackingScreen = () => {
     return (
         <>
             <div className="TrackingContainer">
-                <div className="weekNav">
-                    <div>S</div>
-                    <div>M</div>
-                    <div>T</div>
-                    <div>W</div>
-                    <div>T</div>
-                    <div>F</div>
-                    <div>S</div>
-                    <div>13</div>
-                    <div>14</div>
-                    <div>15</div>
-                    <div>16</div>
-                    <div>17</div>
-                    <div>18</div>
-                    <div>19</div>
-                </div>
                 <div className="dayNav">
-                    <div>{new Date().toDateString()}</div>
-                    <div>{new Date().toDateString()}</div>
-                    <div>{new Date().toDateString()}</div>
+                    <span className="arrowIcn">{`<`}</span>
+                    <span className="bold">{new Date().toDateString()}</span>
                 </div>
                 <div className="analysisContainer">
                     <div className="calCarbonCntContainer">
                         <div>Calories</div>
                         <div>Food Print</div>
-                        <div>{calCarbonTracker.getCalLabel(calCarbonTracker.cal.current)}/{calCarbonTracker.getCalLabel(calCarbonTracker.cal.target)}</div>
-                        <div>{calCarbonTracker.getCarbonScore(calCarbonTracker.carbon.current)}</div>
+                        <div className="bold">{calCarbonTracker.getCalLabel(calCarbonTracker.cal.current)}/{calCarbonTracker.getCalLabel(calCarbonTracker.cal.target)}</div>
+                        <div className="bold">{calCarbonTracker.getCarbonScore(calCarbonTracker.carbon.current)}</div>
                     </div>
                     <button className="calCarbonAnalysisBtn greenBtn">
                         View detailed Analysis
@@ -58,7 +39,7 @@ const TrackingScreen = () => {
                         return (
                             <div className="mealContainer" key={mealId}>
                                 <div className="mealHeading">
-                                    <span className="mealName">{meal.name || meal.id}</span>
+                                    <span className="mealName bold">{meal.name || meal.id}</span>
                                     <span className="calCnt">{calCarbonTracker.getCalLabel(currMealCalCnt)}/{calCarbonTracker.cal.targetLabel}</span>
                                     <button className="add greenBtn" onClick={onClickAddAction} data-meal-type={mealId}>Add</button>
                                 </div>
@@ -67,8 +48,17 @@ const TrackingScreen = () => {
                                         const dishInfo = meal.dishesInfo[dishId];
                                         return (
                                             <div className="mealDish" key={mealId + dishId}>
-                                                <div className="dishName">{dishInfo.name || dishInfo.id}</div>
-                                                <div className="dishCalCnt">{calCarbonTracker.getCalLabel(dishInfo.cal)} {calCarbonTracker.cal.unit}</div>
+                                                <div className="dishName">
+                                                    <img 
+                                                        alt={dishInfo.name || dishInfo.id} 
+                                                        src="https://picsum.photos/48" 
+                                                    />
+                                                    <div>{dishInfo.name || dishInfo.id}</div>
+                                                </div>
+                                                <div className="dishCalCnt">
+                                                    <div className="mgB8">{calCarbonTracker.getCalLabel(dishInfo.cal)} {calCarbonTracker.cal.unit}</div>
+                                                    <div>Food print: {calCarbonTracker.getCarbonScore(dishInfo.carbon)}</div>
+                                                </div>
                                             </div>
                                         )
                                     })

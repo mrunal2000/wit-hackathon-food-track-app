@@ -1,41 +1,18 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ContextCalCarbonTrackerProvider } from './CalCarbonTrackerContext';
-
-const DISH_LIST = ['bread', 'milk', 'eggs'];
-const DISH_TYPE = {
-    'bread': {
-        id: 'bread',
-        name: 'Bread', 
-        cal: 200,
-        carbon: 10
-    },
-    'milk': {
-        id: 'milk',
-        name: 'Milk',
-        cal: 400,
-        carbon: 30
-    },
-    'eggs': {
-        id: 'eggs',
-        name: 'Eggs',
-        cal: 500,
-        carbon: 60
-    }
-}
 
 const getCalLabel = count => `${count || 0}`;
 
 const getCarbonScore = count => {
-    if(count >= 0 && count <  50) {
+    if(count >= 0 && count <  2) {
         return 'Low';
     } 
-    else if(count >= 50 && count <=  100) {
+    else if(count >= 2 && count <  4) {
         return 'High';
     }
     else {
         return 'Very High';
     }
-
 };
 
 const addDishToMealContext = (mealType, dish, contextValue) => {
@@ -111,17 +88,17 @@ const deleteDishToMealContext = (mealType, dish, contextValue) => {
 
 export const defaultObject = {
     cal: {
-        current: 200,
-        currentLabel: '200',
+        current: 0,
+        currentLabel: '0',
         target: 2000,
         targetLabel: '2000',
         unit: 'Cal'
     },
     carbon: {
-        current: 10,
-        currentLabel: getCarbonScore(10),
-        target: 100,
-        targetLabel: getCarbonScore(100)
+        current: 0,
+        currentLabel: getCarbonScore(0),
+        target: 6,
+        targetLabel: getCarbonScore(6)
     },
     meal: {
         'breakfast': {
@@ -143,16 +120,41 @@ export const defaultObject = {
             dishesInfo: {}
         }
     },
-    dishes: {
-        list: DISH_LIST,
-        info: DISH_TYPE
+    dishes : {
+        list: [],
+        info: {}
     },
+    // dishes: {
+    //     list: DISH_LIST,
+    //     info: DISH_TYPE
+    // },
     getCarbonScore,
     getCalLabel
 }
 
 const CalCarbonTrackerProvider = ({children = null}) => {
     const [contextValue, setContextValue] = useState(defaultObject);
+
+    useEffect(() => {
+        fetch('https://food-plan-tracker-boring-topi-ht.eu-gb.mybluemix.net/GetStartedJava/api/items')
+            .then(res => res.json())
+            .then(data => {
+                setContextValue({
+                    ...contextValue,
+                    dishes : {
+                        list: data.map(item => item.id),
+                        info: data.reduce((acc, item) => {
+                            acc[item.id] = {
+                                ...item,
+                                cal: item.calorie,
+                                carbon: item.carbonFootPrint
+                            };
+                            return acc;
+                        }, {})
+                    }
+                })
+            });
+    }, []);
 
     const addDishToMeal = useCallback((mealType, dish) => {
         setContextValue(addDishToMealContext(mealType, dish, contextValue));
@@ -162,6 +164,9 @@ const CalCarbonTrackerProvider = ({children = null}) => {
         setContextValue(deleteDishToMealContext(mealType, dish, contextValue));
     }, [contextValue]);
 
+    contextValue.addDishToMeal = addDishToMeal;
+    contextValue.deleteDishToMeal = deleteDishToMeal;
+
     const contextValueWithFunctions = useMemo(() => {
         return {
             ...contextValue,
@@ -170,7 +175,6 @@ const CalCarbonTrackerProvider = ({children = null}) => {
         }
     }, [contextValue, addDishToMeal, deleteDishToMeal])
     
-    console.log('children::: ', children);
     return (
         <ContextCalCarbonTrackerProvider value={contextValueWithFunctions}>
             {Number.isNaN(children) ? null : children}

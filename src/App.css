@@ -1,4 +1,7 @@
-.App {}
+.App {
+  font-size: 14px;
+  line-height: 24px;
+}
 
 .App-link {
   color: #61dafb;
@@ -10,30 +13,48 @@
   border: none;
   padding: 5px 24px;
   border-radius: 5px;
+  font-weight: bold;
+}
+
+.doneBtn {
+  padding: 12px 24px;
+  width: calc(100vw - 80px);
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  margin: 0 40px;
+}
+
+.arrowIcn {
+  position: relative;
+  font-size: 24px;
+  margin-right: 16px;
+  margin-left: 8px;
+  vertical-align: middle;
+  font-weight: normal;
+}
+
+.arrowIcn:after {
+  content: '-';
+  position: absolute;
+  top: 5px;
+  right: -3px;
+}
+.arrowIcn.diff:after {
+  top: -1px;
+}
+
+.bold {
+  font-weight: bold
 }
 
 /** TrackingContainer **/
 .TrackingContainer {
-  background-color: #f0f0f0;  
+  background-color: #faf9f9;  
   height: 100vh;
 }
 
-.TrackingContainer .weekNav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  background-color: #ffffff;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.TrackingContainer .weekNav > div{
-  flex: calc(100vw / 7);
-}
-
 .TrackingContainer .dayNav {
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
   background-color: #ffffff;
   border-bottom: 1px solid #f0f0f0;
 }
@@ -43,10 +64,11 @@
 }
 
 .analysisContainer {
-  background-color: #fff;
+  background-color: #f5f8ed;
   margin: 15px;
   padding: 10px;
   border-radius: 5px;
+  border: 2px solid #bff155
 }
 
 .analysisContainer .calCarbonCntContainer {
@@ -57,6 +79,7 @@
 .analysisContainer .calCarbonCntContainer > div {
   flex: calc(100% / 2);
   padding: 5px 0;
+  text-align: center;
 }
 
 .analysisContainer .calCarbonAnalysisBtn {
@@ -76,14 +99,39 @@
   align-items: center;
 }
 
+.mealContainer .mealHeading .calCnt {
+  font-size: 12px;
+}
+
+.mealContainer .mealHeading > span {
+  flex: calc(100% / 3);
+}
+
 .mealContainer .mealDish {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px;
+  align-items: start;
+  padding: 8px;
   background-color: #f0f0f0;
   border-radius: 5px;
   margin: 5px 0;
+  font-size: 12px;
+}
+
+.mealContainer .mealDish .dishName {
+  display: flex;
+}
+
+.mealContainer .mealDish .dishName > img {
+  border-radius: 4px;
+  margin-right: 8px;
+}
+.mealContainer .mealDish .dishCalCnt{
+  text-align: right;
+}
+
+.mealContainer .mealDish .dishCalCnt .mgB8 {
+  margin-bottom: 12px;
 }
 /** /TrackingContainer **/
 
@@ -117,10 +165,13 @@ body.overlayContentOpen {
 /** AddMeal **/
 .addMealContainer{
   padding: 0 16px;
+  background-color: #faf9f9;
+  height: 100vh;
 }
 
 .addMealContainer .mealName {
   font-weight: bold;
+  margin-left: -16px;
 }
 
 .addMealContainer .seachContainer {
@@ -138,8 +189,9 @@ body.overlayContentOpen {
 
 .addMealContainer .seachContainer input {
   width: calc(100% - 35px);
-  padding: 10px 5px 10px 30px;
+  padding: 10px 5px 10px 36px;
   border-radius: 5px;
+  border: 1px solid #e7e7e7; 
 }
 
 .addMealContainer .dishContainer {
@@ -150,19 +202,31 @@ body.overlayContentOpen {
   display: flex;
   border: 1px solid #f0f0f0;
   align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  padding: 8px 16px;
+}
+
+.addMealContainer .dishContainer .dishItem  .dishDetails {
+  flex: 1;
 }
 
 .addMealContainer .dishContainer .dishItem .dishCnt {
-  flex: 1;
-  text-align: right;
+  display: flex;
+  font-size: 12px;
+  line-height: 20px;
+  justify-content: flex-start;
+  color: #ababab;
+}
+
+.addMealContainer .dishContainer .dishItem .dishCnt .mgR8 {
+  margin-right: 8px;;
 }
 
 .addMealContainer .dishContainer .dishItem > div {
   padding: 5px;
-}
-
-.checkActionBtn {
-  color: #fff;
 }
 
 .checkActionBtn, .plusActionBtn {
@@ -170,29 +234,31 @@ body.overlayContentOpen {
   align-self: center;
   padding: 4px;
   cursor: pointer;
+  z-index: 1;
+  color: #fff;
+  font-size: 24px;
 }
 
-.checkActionBtn:after {
+.checkActionBtn {
+  transform: scaleX(-1) rotate(-45deg);
+}
+
+.checkActionBtn:after, .plusActionBtn:after {
   content: '';
-  width: 15px;
-  height: 15px;
+  width: 24px;
+  height: 24px;
   background-color: #239950;
   position: absolute;
-  top: 11px;
-  left: 2px;
   z-index: -1;
   border-radius: 50%;
 }
+.checkActionBtn:after {
+  top: 11px;
+  left: -1px;
+}
 
-.doneBtn {
-  color: #fff;
-  background-color: rgb(65, 74, 178);
-  border: none;
-  padding: 12px 24px;
-  width: calc(100vw - 80px);
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  margin: 0 40px;
+.plusActionBtn:after {
+  top: 10px;
+  left: 1px;
 }
 /** /AddMeal **/

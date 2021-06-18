@@ -33,10 +33,13 @@ const AddMeal = ({ open, setIsOpened, mealType = 'breakfast', calCarbonTracker =
     
     return <Overlay isOpened={ open }>
         <div className="addMealContainer">
-            <div className="mealName">Add {(calCarbonTracker.meal[mealType].name || calCarbonTracker.meal[mealType].id)}</div>
+            <div className="mealName">
+                <span className="arrowIcn diff" onClick={onDone}>{`<`}</span>
+                <span>Add {(calCarbonTracker.meal[mealType].name || calCarbonTracker.meal[mealType].id)}</span>
+            </div>
             <div className="seachContainer">
                 <img alt="search food item" src="https://image.flaticon.com/icons/png/512/622/622669.png"/>
-                <input placeholder="Search" type="text" onChange={onSearchInputChange}/>
+                <input type="text" onChange={onSearchInputChange}/>
             </div>
             <div className="dishContainer">
                 {
@@ -45,14 +48,16 @@ const AddMeal = ({ open, setIsOpened, mealType = 'breakfast', calCarbonTracker =
                        const isSelected = calCarbonTracker.meal[mealType].dishes.includes(dishId);
                        return (
                             <div className="dishItem" key={dishId}>
-                                <div>{dishInfo.name || dishInfo.id}</div>
-                                <div className="dishCnt">
-                                    {`${dishInfo.cal} ${calCarbonTracker.cal.unit}`}
-                                    <div>Food Print: {calCarbonTracker.getCarbonScore(dishInfo.carbon)}</div>
+                                <div className="dishDetails">
+                                    <div>{dishInfo.name || dishInfo.id}</div>
+                                    <div className="dishCnt">
+                                        <div className="mgR8">{`${dishInfo.cal} ${calCarbonTracker.cal.unit}`}</div>
+                                        <div>Food Print: {calCarbonTracker.getCarbonScore(dishInfo.carbon)}</div>
+                                    </div>
                                 </div>
                                 {
                                     isSelected 
-                                        ? <div className="checkActionBtn" onClick={deleteDish(dishInfo)}>v</div>
+                                        ? <div className="checkActionBtn" onClick={deleteDish(dishInfo)}>L</div>
                                         : <div className="plusActionBtn" onClick={addDish(dishInfo)}>+</div>
                                 }
                             </div>
@@ -62,7 +67,7 @@ const AddMeal = ({ open, setIsOpened, mealType = 'breakfast', calCarbonTracker =
             </div>
             <button 
                 type="button" 
-                className="doneBtn"
+                className="greenBtn doneBtn"
                 onClick={onDone}
             >
                 Done
