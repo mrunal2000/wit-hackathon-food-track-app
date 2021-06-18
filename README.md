@@ -43,7 +43,7 @@ Community building through gamification & Social Media
 
 ### Architecture
 
-
+![alt text](https://github.com/mrunal2000/wit-hackathon-food-track-app/blob/main/Architecture.png)
 
 ### UI/UX Tools
 
@@ -53,11 +53,11 @@ Miro : Storyboarding/Brainstorming tool
 ### Authors
 
 Team : Climate Crew @OLX Group
-Mrunal Dhaygude
-Asawari Bora
-Prerna Dubey
-Aman Sharma
-Priya Saraf
+1. Mrunal Dhaygude
+2. Asawari Bora
+3. Prerna Dubey
+4. Aman Sharma
+5. Priya Saraf
 
 ### Live Demo :
 
