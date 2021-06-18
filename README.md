@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Green Buddy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+June 18th, 2021
 
-## Available Scripts
+### Product Overview
 
-In the project directory, you can run:
+Create a platform which can help people choose their food consciously, lead a healthier life and in return help reduce their foodprint. 
+Food print : The environmental impact, or footprint, of food, including the amount of land required to sustain a diet, the amount of carbon dioxide produced, if the food is organic, and if it is local.
 
-### `yarn start`
+### Long Description
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### What’s the Problem?
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+We do not realise the amount of impact our ways of eating creates on the environment. About 25% of all the climate change problems that we are seeing can be attributed to our daily food choices. Which is double the impact created by all the cars together in the world. To put it simply, we can say that 50 g of chicken produces as much Foodprint (CO2) as driving 2 kms. How we eat has changed drastically over the years, the negative impact that our current diet creates has increased multifolds over the years. If we continue to thoughtlessly continue with our existing eating patterns, it can create major problems for our health as well as our environment.
 
-### `yarn test`
+### How Technology can help?
+Our vision is to create a platform to smartly help people lead healthier and more eco-friendly lives. We aim to do that by creating innovative technologies to understand the needs of our users and provide them with a service very carefully crafted for them. With increased use of technology in fitness and health journeys, we change the scope of how people look at their journeys towards getting healthier. We want to leverage smart technologies to make the right suggestions and help people with sustainable and healthy food options and many more such features which will help them get fitter and more eco-friendly.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### The Idea
 
-### `yarn build`
+As we have mentioned the impact of food consumption on climate change above, more and more people are looking for ways to stay healthy in a sustainable and eco-friendly way! A lot of people know about fitness conscious meals but very few are well educated about sustainable and healthy food options. People are also willing to contribute towards reducing climate change but are clueless about how their individual contributions can make a huge difference, just by some conscious eating!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Recognising the need of the situation, we have come up with an idea to help people calculate the impact that their current diet has on the environment, also help them with their fitness goals. By getting to know our user, their needs and eating patterns and health requirements we help them track their meals, help them make better food choices,  push them by providing alternative meal suggestions, guide them with with tips to reduce foodprint and encourage them to be part of health/sustainability challenges in order to stay fit as well keep their environment safe and healthy. By providing this platform, we will enable users to impact climate change positively and lead a healthy life. We want to change the way people look at their meals, not only make them conscious about health repercussions but also environmental repercussions.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### The Roadmap
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Plan and Scope of Green Buddy:
+Integrate global Food database to cater to all user preferences
+Get exact foodprint count against global foods/meals & their portion size.
+Monthly progress and impact calculation system
+Enable user to check foodprint of specific food item not just meals.
+Personalisation of suggested meals (depending on user preferences, required quantity etc)
+Community building through gamification & Social Media
 
-### `yarn eject`
+### The Solution
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. We have built a web application for food analysis to calculate their calorie levels and environmental impact through foodprint.
+2. The React app communicates with the back-end APIs exposed via Java Rest service.
+3. The back end handles data requested by the web app and exposes some public endpoints for food calorie and carbon footprint through a RESTful API.
+4. The back end queries Recommendation engine for identifying food alternatives to attain lower carbon foodprint and optimal calorie count .
+5. Recommendation engine crawls public websites for updates on food options.
+6. The back end stores and retrieves information on food items in an IBM Cloudant NoSQL database.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Architecture
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### UI/UX Tools
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Figma : UI tool 
+Miro : Storyboarding/Brainstorming tool
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Authors
 
-### Code Splitting
+Team : Climate Crew @OLX Group
+Mrunal Dhaygude
+Asawari Bora
+Prerna Dubey
+Aman Sharma
+Priya Saraf
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Live Demo :
 
-### Analyzing the Bundle Size
+https://www.youtube.com/watch?v=zGxhXwCg5lA
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
