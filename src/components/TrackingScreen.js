@@ -1,15 +1,20 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { CalCarbonTrackerContext } from '../context/CalCarbonTrackerContext';
 import AddMeal from './AddMeal';
+import ShowAnalysis from './ShowAnalysis';
 
 const TrackingScreen = () => {
     const [mealType, setMealType] = useState('breakfast');
     const [isOpened, setIsOpened] = useState(false);
+    const [showAnalysis, setShowAnalysis] = useState(false);
     const calCarbonTracker = useContext(CalCarbonTrackerContext);
 
     const onClickAddAction = useCallback(e => {
         setIsOpened(true);
         setMealType(e.target.dataset.mealType);
+    }, []);
+    const onClickOnAnalysis = useCallback(() => {
+        setShowAnalysis(true);
     }, []);
 
     return (
@@ -26,7 +31,7 @@ const TrackingScreen = () => {
                         <div className="bold">{calCarbonTracker.getCalLabel(calCarbonTracker.cal.current)}/{calCarbonTracker.getCalLabel(calCarbonTracker.cal.target)}</div>
                         <div className="bold">{calCarbonTracker.getCarbonScore(calCarbonTracker.carbon.current)}</div>
                     </div>
-                    <button className="calCarbonAnalysisBtn greenBtn">
+                    <button className="calCarbonAnalysisBtn greenBtn" onClick={onClickOnAnalysis}>
                         View detailed Analysis
                     </button>
                 </div>
@@ -75,6 +80,9 @@ const TrackingScreen = () => {
                     calCarbonTracker={calCarbonTracker} 
                     setIsOpened={setIsOpened}
                 />
+            }
+            {
+                showAnalysis && <ShowAnalysis setShowAnalysis={setShowAnalysis}/>
             }
         </>
     )

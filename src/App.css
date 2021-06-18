@@ -260,3 +260,12 @@ body.overlayContentOpen {
   left: 1px;
 }
 /** /AddMeal **/
+
+.staticImage {
+  width: 100%;
+  margin-top: -75px;
+}
+
+.cropImg {
+  overflow: hidden;
+}
