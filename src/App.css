@@ -56,15 +56,11 @@
 
 .TrackingContainer .dayNav {
   background-color: #ffffff;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.TrackingContainer .dayNav {
-  flex: calc(100vw / 3);
+  padding: 10px 0;
 }
 
 .analysisContainer {
-  background-color: #f5f8ed;
+  background-color: #fff;
   margin: 15px;
   padding: 10px;
   border-radius: 5px;
@@ -170,8 +166,10 @@ body.overlayContentOpen {
 }
 
 .addMealContainer .mealName {
+  font-size: 14px;
   font-weight: bold;
   margin-left: -16px;
+  padding: 10px 0;
 }
 
 .addMealContainer .seachContainer {
