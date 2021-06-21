@@ -25,12 +25,12 @@ Recognising the need of the situation, we have come up with an idea to help peop
 ### The Roadmap
 
 Plan and Scope of Green Buddy:
-Integrate global Food database to cater to all user preferences
-Get exact foodprint count against global foods/meals & their portion size.
-Monthly progress and impact calculation system
-Enable user to check foodprint of specific food item not just meals.
-Personalisation of suggested meals (depending on user preferences, required quantity etc)
-Community building through gamification & Social Media
+1. Integrate global Food database to cater to all user preferences
+2. Get exact foodprint count against global foods/meals & their portion size.
+3. Monthly progress and impact calculation system
+4. Enable user to check foodprint of specific food item not just meals.
+5. Personalisation of suggested meals (depending on user preferences, required quantity etc)
+6. Community building through gamification & Social Media
 
 ### The Solution
 
